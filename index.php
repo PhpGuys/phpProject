@@ -8,6 +8,7 @@
 </head>
 <body>
     <h3>Php Top!</h3>
+    <h1>Hello World</h1>
 <?php
 echo "Hello PHP!";
 ?>
