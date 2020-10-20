@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Php Top!</h3>
-    <h1>Hello World</h1>
 <?php
-echo "Hello Igor!";
+include 'header.php';
 ?>
-</body>
-</html>
 
+<section class="welcome">
+    <div class="welcome__title">Добро пожаловать на форум!</div>
+    <div class="welcome__descr">
+    Здесь вы получите ответы на интересующие вас вопросы
+    </div>
+    <button onclick="document.location= 'registr.php'" class="welcome__reg">Зарегистироваться</button>
+</section>
+
+<?php
+include 'footer.php';
+?>
