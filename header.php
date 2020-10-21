@@ -36,7 +36,7 @@
     <a class="logo__link" href="#">
       <img class="logo__link-img" src="images/logo.png" alt="logo" width="80" height="80">
     </a>
-    <div class="logo__headline"> Portal</div>
+    <div class="logo__headline"></div>
    
   </div>
   <button class="btn-login"><a class="btn-login__link" href="login.php">Войти</a></button>
