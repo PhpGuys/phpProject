@@ -3,9 +3,9 @@ include 'header.php';
 ?>
 
 <form class="registr-form" action="action_page.php">
-  <div class="container">
+
     <h1 class="reg-title">Регистрация</h1>
-    <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
+    <p style="text-align: center;">Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
     <hr>
 
     <label for="email"><b>Email</b></label>
@@ -32,7 +32,7 @@ include 'header.php';
       <button type="button" class="cancelbtn">Закрыть</button>
       <button type="submit" class="signupbtn">Зарегистрироваться</button>
     </div>
-  </div>
+
 </form>
 <?php
 include 'footer.php';

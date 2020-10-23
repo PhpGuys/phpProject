@@ -5,7 +5,7 @@
             <a class="logo__link" href="#">
               <img class="logo__link-img" src="images/logo.png" alt="logo" width="80" height="80">
             </a>
-                <div class="logo__headline"> Portal</div>
+                <div class="logo__headline"> Events</div>
         </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             <p>&copy 2020 All rights reserved</p>

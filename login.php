@@ -1,9 +1,9 @@
 <?php
 include 'header.php';
 ?>
-
+<div class="form">
 <form class="login-form" action="action_page.php">
-  <div class="container">
+
     <h1 class="login-title">Авторизация</h1>
     
     <hr>
@@ -21,8 +21,10 @@ include 'header.php';
       <button type="button" class="cancelbtn">Закрыть</button>
       <button type="submit" class="signupbtn">Войти</button>
     </div>
-  </div>
+
 </form>
+</div>
+
 
 <?php
 include 'footer.php';
