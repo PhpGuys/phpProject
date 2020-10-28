@@ -46,4 +46,5 @@
   <a href="articles.php">Новости</a>
   <a href="articles.php">Статьи</a>
   <a href="articles.php">О нас</a>
+  <a href = "profile.php">Профиль</a>
 </section>
