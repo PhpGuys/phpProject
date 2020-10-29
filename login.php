@@ -2,13 +2,13 @@
 include 'header.php';
 ?>
 <div class="form">
-<form class="login-form" action="action_page.php">
+<form class="login-form" action="db/login_user.php" method="post">
 
     <h1 class="login-title">Авторизация</h1>
     
     <hr>
     <label for="email"><b>Email</b></label>
-    <input class="login-field" type="text" placeholder="Enter Email" name="email" required>
+    <input class="login-field" type="text" placeholder="Email" name="email" required>
 
     <label for="psw"><b>Пароль</b></label>
     <input class="login-field" type="password" placeholder="Пароль" name="psw" required>

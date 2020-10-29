@@ -2,7 +2,7 @@
 include 'header.php';
 ?>
 
-<form class="registr-form" action="action_page.php">
+<form class="registr-form" action="db/reg_newUser.php" method="post">
 
     <h1 class="reg-title">Регистрация</h1>
     <p style="text-align: center;">Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
@@ -12,7 +12,10 @@ include 'header.php';
     <input class="reg-field" type="text" placeholder="Enter Email" name="email" required>
 
     <label for="name"><b>Имя</b></label>
-    <input class="reg-field" type="text" placeholder="Имя" name="name" required>
+    <input class="reg-field" type="text" placeholder="Имя" name="first-name" required>
+
+    <label for="name"><b>Фамилия</b></label>
+    <input class="reg-field" type="text" placeholder="Фамилия" name="last-name" required>
 
     <label for="psw"><b>Пароль</b></label>
     <input class="reg-field" type="password" placeholder="Пароль" name="psw" required>
