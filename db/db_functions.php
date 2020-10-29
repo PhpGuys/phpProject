@@ -24,7 +24,7 @@ function user_is_exist($email) { // функция проверяет есть �
 }
 function pass_is_equals($email, $pass) { // функция проверяет схожи ли пароли
     $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE email='{$email}'"); 
-    if(mysqli_num_rows($result) < 1) throw new Exception('Пользоваеля с таким email не существует');
+    if(mysqli_num_rows($result) < 1) return;
     $row = mysqli_fetch_assoc($result);
     if(md5($pass) == $row['password']) return true;
     else return false;
