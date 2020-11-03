@@ -19,9 +19,7 @@ color:white;
 list-style-type: none;
 margin: 15px;
 padding: 15px;
-
-
-display:flex;
+display: flex;
 
 justify-content:center;
 border-radius:10px;
@@ -77,6 +75,7 @@ background-color: #F0FFF0;
 
 .six_month{
    display:flex;
+   justify-content: center;
 }
 
 caption{
@@ -176,7 +175,41 @@ text-align: center;
 border: solid 3px white;
 box-shadow: 1px 1px 20px #000000;
     border-radius: 15px;
+    outline: none;
 }
+
+
+@media only screen and (max-width: 1830px) {
+   .calendar, .Form_Data{
+      justify-content: center;
+      text-align: center;
+   }
+ .six_month{
+    display: inline-table;
+   font-size: 150%;
+
+
+ }
+#Data{
+    font-size: 90%;
+    }
+    #dayOfWeek{
+     font-size: 50%;
+   }
+}
+
+@media only screen and (max-width: 950px){
+a{
+   font-size: 120%;
+}
+ul{
+   display:grid;
+   text-align: center;
+   justify-content: center;
+}
+}
+
+
 
 
 </style>
