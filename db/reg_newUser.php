@@ -16,19 +16,25 @@ if(user_is_exist($email) == true){
     return;
 }
 else{
-    if( (strlen($firstName) > 12 ) || (strlen($firstName) < 3 ) || (strlen($lastName) > 15) )
+    if( (mb_strlen($firstName) > 12 ) || (mb_strlen($firstName) < 3 ) || (mb_strlen($lastName) > 15) )
     {
     echo "Некорректно введено имя или фамилия! (не менее 3 и не более 12 символов, фамилия - не более 15)";
     }
-    else if((strlen($password) > 32 ) || (strlen($password) < 4 ))
+    else if((mb_strlen($password) > 32 ) || (mb_strlen($password) < 4 ))
     {
         echo "Ошибка! Длина пароля не менее 4 символов (и не более 32)";
     }
     else if($password == $psw_rpt)
     {
-        echo "Регистрация пройдена успешно";
         add_user($email, $firstName, $lastName, $password);
+        setcookie("firstName", $firstName, time()+60*60*24, "/");
+        setcookie("lastName", $lastName, time()+60*60*24, "/");
+        setcookie("email", $email, time()+60*60*24, "/");
         
+        echo "<script>
+        alert('Регистрация прошла успешно!');
+        document.location.href='../profile.php';
+        </script>";        
     }
     else{
         echo "Повторно введенный пароль не совпадает с текущим";

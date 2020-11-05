@@ -1,7 +1,7 @@
 <?php
-include 'header.php';
+require_once 'header.php';
+require_once 'cookie_handler.php';
 ?>
-
 
 <div id="main">
 <div class="row" id="real-estates-detail">
@@ -17,7 +17,7 @@ include 'header.php';
 <div class="panel-body">
 <div class="text-center" id="author">
 <img src="ref">
-<h3>Name</h3>
+<h3> <?php echo $user_firstname;  ?> </h3>
 <small class="label label-warning">Country</small>
 <!-- <p>Description</p>
 <p class="sosmed-author">
@@ -42,14 +42,14 @@ include 'header.php';
 <h4>Ваш профиль</h4>
 <table class="table table-th-block">
 <tbody>
-<tr><td class="active">Зарегистрирован:</td><td>тут тоже скрипт нужен</td></tr>
-<tr><td class="active">Последняя активность:</td><td>может быть, ток нужен скрипт</td></tr>
+<tr><td class="active">Имя пользователя:</td><td> <?php echo user_firstname();  ?> </td></tr>
+<tr><td class="active">Фамилия пользователя:</td><td> <?php echo user_lastname();  ?></td></tr>
 <tr><td class="active">Страна:</td><td>Россия</td></tr>
-<tr><td class="active">Город:</td><td>город???? хз нужен ли</td></tr>
-<tr><td class="active">Пол:</td><td>Мужской</td></tr>
+<tr><td class="active">Город:</td><td>город????</td></tr>
 <tr><td class="active">Возраст:</td><td>возраст</td></tr>
-<tr><td class="active">Почта:</td><td>e-mail</td></tr>
-<tr><td class="active">Репутация пользователя:</td><td>Хз надо или нет</td></tr>
+<tr><td class="active">Почта:</td><td> <?php echo user_email(); ?> </td></tr>
+<tr><td class="active">Номер телефона:</td><td>телефон</td></tr>
+
 </tbody>
 </table>
 </div>

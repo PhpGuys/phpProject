@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  
+  <?php require_once 'cookie_handler.php' ?>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
   <script type="text/javascript"> 
   $(function() { 
@@ -39,12 +39,25 @@
     <div class="logo__headline"> Events</div>
    
   </div>
-  <button class="btn-login"><a class="btn-login__link" href="login.php">Войти</a></button>
+  <?php 
+  if(is_authorized()){
+    echo "<button class='btn-login'><a class='btn-login__link' href='login.php'>Выйти из аккаунта</a></button>";
+  }
+  else{
+    echo "<button class='btn-login'><a class='btn-login__link' href='login.php'>Войти</a></button>";
+  }
+  ?>
+  
 </header>
 <section class="head-nav">
   <a  href="index.php">Главная</a>
   <a href="articles.php">Новости</a>
   <a href="articles.php">Статьи</a>
   <a href="articles.php">О нас</a>
-  <a href = "profile.php">Профиль</a>
+  
+  <?php
+  if ( isset($_COOKIE['firstName']) && isset($_COOKIE['lastName']) && isset($_COOKIE['email']) ) {
+    echo "<a href = 'profile.php'>Профиль</a>" ; 
+  }
+  ?>
 </section>

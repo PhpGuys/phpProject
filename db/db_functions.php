@@ -29,6 +29,26 @@ function pass_is_equals($email, $pass) { // функция проверяет с
     if(md5($pass) == $row['password']) return true;
     else return false;
 }
+function get_fname_byEmail($email_form){
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE email='{$email_form}'"); 
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $fname =  $row['first_name'];
+        return $fname;
+    }
+   
+    else return "Не найдено";
+}
+function get_lname_byEmail($email_form){
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE email='{$email_form}'"); 
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $lname =  $row['last_name'];
+        return $lname;
+    }
+   
+    else return "Не найдено";
+}
 
 function table_is_created() {
     $result = mysqli_query($GLOBALS['conn'], "SHOW TABLES LIKE 'users'");
