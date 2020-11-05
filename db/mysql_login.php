@@ -1,6 +1,6 @@
 <?php
-$hn = '127.0.0.1';
-$db = 'events';
-$un = 'root';
-$pw = 'root';
+$hn = 'http://globus.decadalab.ru/';
+$db = 'u0963154_globus';
+$un = 'u0963154_globus';
+$pw = 'V4b9Z5c6';
 ?>
