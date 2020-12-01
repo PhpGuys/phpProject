@@ -1,11 +1,10 @@
-<?php
-echo <<<DT
+
 <!DOCTYPE html>
 <html>
 <head>
 
    <title>Календарь событий</title>
-     <link href="images/favicon.ico" 
+     <link href="../images/favicon.ico" 
   rel = "shortcut icon" type="image/x-icon">
 <style type="text/css">
 
@@ -138,6 +137,7 @@ margin: -8px;
 .Form_Data{
  padding-top: 5px;
  display: flex;
+ flex-wrap: wrap;
 }
 .clockpage
 {
@@ -211,18 +211,19 @@ ul{
 
 
 
-
 </style>
 
-
+<?php 
+require_once 'events_handler.php';
+?>
 </head>
  <body onload="clockTimer();">
       <header>
 <div class="logo">
     <a class="logo__link" href="#">
-      <img src="images/logo.png" alt="logo" width="80" height="80">
+      <img src="../images/logo.png" alt="logo" width="80" height="80">
     </a>
-    <div class="logo__headline"> Portal</div>
+    <div class="logo__headline">Events</div>
          <div class="clockpage">
             <span id="clock"></span>
             <span id="dayOfWeek"></span>          
@@ -230,9 +231,9 @@ ul{
 </div>
             <nav>
                <ul>
-                  <li><a href="#">На главную</a></li>
-                  <li><a href="#">Профиль</a></li>
-                  <li><a href="#">Активные события</a></li>
+                  <li><a href="../index.php">На главную</a></li>
+                  <li><a href="../profile.php">Профиль</a></li>
+                  <!-- <li><a href="#">Активные события</a></li> -->
                </ul>
             </nav>
       </header>
@@ -936,11 +937,15 @@ ul{
 </table>
 </div>
 
-      <form class="Form_Data">
-         
+<h3>Добавить событие</h3>
+      <form class="Form_Data" method="$_POST" action="events_handler.php">
+       
          <input type="date" name="calendar" min="2020-10-10" max="2040-05-20">
          <input type="submit" value="Ввести">
-      
+         <input type="text" placeholder="Заголовок">
+         <textarea placeholder="Описание">
+
+         </textarea>
       </form>
 </main>
 
@@ -974,5 +979,3 @@ ul{
 <footer>&copy; Все права защищены</footer>
 </body>
 </html>
-DT
-?>;

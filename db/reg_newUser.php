@@ -16,9 +16,9 @@ if(user_is_exist($email) == true){
     return;
 }
 else{
-    if( (mb_strlen($firstName) > 12 ) || (mb_strlen($firstName) < 3 ) || (mb_strlen($lastName) > 15) )
+    if( (mb_strlen($firstName) > 20 ) || (mb_strlen($firstName) < 3 ) || (mb_strlen($lastName) > 20) )
     {
-    echo "Некорректно введено имя или фамилия! (не менее 3 и не более 12 символов, фамилия - не более 15)";
+    echo "Некорректно введено имя или фамилия! (не менее 3 и не более 20 символов, фамилия - не более 20)";
     }
     else if((mb_strlen($password) > 32 ) || (mb_strlen($password) < 4 ))
     {

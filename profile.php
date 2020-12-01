@@ -1,6 +1,6 @@
 <?php
 require_once 'header.php';
-require_once 'cookie_handler.php';
+include 'events/events_handler.php';
 ?>
 
 <div id="main">
@@ -59,6 +59,21 @@ require_once 'cookie_handler.php';
 </div>
 </div>
 </div>
+
+<div class="news-feeds">
+<div class="news-feeds__title">
+    Доступные новостные ленты:
+</div>
+<div class="news-feeds__list">
+   <?php get_eventfeeds(user_email()) ?>
+</div>
+<div class="news-feeds__myEvents">
+<div class="news-feeds__title">
+    Моя новостная лента:
+</div>
+<a href="events/calendar.php" class="news-feeds__link">Перейти в новостную ленту</a>    
+</div>
+</div> 
 <?php
 include 'footer.php';
 ?>
