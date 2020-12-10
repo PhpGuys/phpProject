@@ -69,7 +69,7 @@ require_once 'header.php';
 </div>
 <div class="news-feeds__myEvents">
 <div class="news-feeds__title">
-    Моя новостная лента:
+    Моя новостная лента:  <?php echo get_eventfeedNameByAuthor(user_firstname()." ".user_lastname()) ?>
 </div>
 <a href="events/calendar.php" class="news-feeds__link">Перейти в новостную ленту</a>    
 </div>
