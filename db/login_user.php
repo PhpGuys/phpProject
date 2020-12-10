@@ -11,7 +11,8 @@ if(pass_is_equals($email, $password) == true)
     setcookie("firstName", get_fname_byEmail($email), time()+60*60*24, "/");
     setcookie("lastName", get_lname_byEmail($email), time()+60*60*24, "/");
     setcookie("email", $email, time()+60*60*24, "/");
-
+    $author = get_fname_byEmail($email)." ".get_lname_byEmail($email);
+    setcookie("mainEventFeed", get_eventfeedNameByAuthor($author), time()+60*60*24, "/");
     echo "<script>
         alert('Авторизация прошла успешно!');
         document.location.href='../profile.php';

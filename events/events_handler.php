@@ -1,7 +1,6 @@
 <?php
-require_once '../db/db_functions.php';
-require_once '../cookie_handler.php';
-$email = user_email();
+require_once __DIR__.'/../db/db_functions.php';
+require_once __DIR__.'/../cookie_handler.php';
 function get_eventfeeds($email) {
 
     $query = "SELECT * FROM event_feeds";
@@ -16,8 +15,21 @@ if ($result = mysqli_query($GLOBALS['conn'], $query)) {
         
     }
 }
-mysqli_free_result($result);
+else {
+    echo "Не найдено";
+}
+}
 
+function addContributor($email_contr){
+    
+    if($email_contr == user_email()){
+        return false;
+    }
+    $id = get_userId($email_contr);
+    if($id != false){
+        add_contributor($id);
+    }
+    else return false;
 }
 
 

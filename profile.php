@@ -1,6 +1,5 @@
 <?php
 require_once 'header.php';
-include 'events/events_handler.php';
 ?>
 
 <div id="main">
@@ -65,7 +64,8 @@ include 'events/events_handler.php';
     Доступные новостные ленты:
 </div>
 <div class="news-feeds__list">
-   <?php get_eventfeeds(user_email()) ?>
+   <?php require_once 'events/events_handler.php';
+    get_eventfeeds(user_email()); ?>
 </div>
 <div class="news-feeds__myEvents">
 <div class="news-feeds__title">

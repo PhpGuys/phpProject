@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<?php 
+require_once __DIR__.'/events_handler.php';
+?>
    <title>Календарь событий</title>
      <link href="../images/favicon.ico" 
   rel = "shortcut icon" type="image/x-icon">
@@ -213,9 +215,6 @@ ul{
 
 </style>
 
-<?php 
-require_once 'events_handler.php';
-?>
 </head>
  <body onload="clockTimer();">
       <header>
@@ -942,11 +941,33 @@ require_once 'events_handler.php';
        
          <input type="date" name="calendar" min="2020-10-10" max="2040-05-20">
          <input type="submit" value="Ввести">
-         <input type="text" placeholder="Заголовок">
-         <textarea placeholder="Описание">
+         <input type="text" placeholder="Заголовок" name="title">
+         <textarea placeholder="Описание" name="text">
 
          </textarea>
       </form>
+      <h3>Удалить событие</h3>
+      <form class="Form_Data" method="$_POST" action="events_handler.php">
+       
+         <input type="date" name="calendar" min="2020-10-10" max="2040-05-20" name="calendar_delete">
+         <input type="submit" value="Ввести">
+         <input type="text" placeholder="Заголовок" name="title_delete" >
+      </form>
+
+      <br style="background-color: #5291cc; border-radius: 4px;">
+      <h3>Добавить пользователя</h3>
+      <form class="Form_Data" method="$_POST" action="add_user.php">
+         <input type="text" placeholder="Эл.почта пользователя" name="email_contr">
+         <button type="submit">Добавить</button>
+      </form>
+      <h3>Удалить пользователя</h3>
+      <form class="Form_Data" method="$_POST" action="delete_user.php">
+         <input type="text" placeholder="Эл.почта пользователя" name="email_contrdelete">
+         <button type="submit">Удалить</button>
+      </form>
+      <div class="contributors">
+         
+      </div> 
 </main>
 
         <script type="text/javascript">
@@ -972,10 +993,7 @@ require_once 'events_handler.php';
 }
         </script>
         
-
-    
-   
-        
+      
 <footer>&copy; Все права защищены</footer>
 </body>
 </html>

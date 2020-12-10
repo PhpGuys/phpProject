@@ -109,17 +109,24 @@ return $result;
 function get_eventfeedNameByAuthor($author) {
     $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM event_feeds WHERE author = '{$author}'"); 
 }
-function add_contributor($id_contr, $fname_author, $lname_author) {
+function add_contributor($id_contr) {
     $user_result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE id='{$id_contr}'"); 
     if(mysqli_num_rows($user_result) == 1) {
-        $author = $fname_author." ".$lname_author;
         $space = " ";
         $result = mysqli_query($GLOBALS['conn'], 
         "UPDATE event_feeds SET contributors = '$id_contr.$space' WHERE id='{$id_contr}'");
     }
     else return false;
 }
-
+function delete_contributor($id_contr) {
+    $user_result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE id='{$id_contr}'"); 
+    if(mysqli_num_rows($user_result) == 1) {
+        $space = " ";
+        $result = mysqli_query($GLOBALS['conn'], 
+        "UPDATE event_feeds SET contributors = '$id_contr.$space' WHERE id='{$id_contr}'");
+    }
+    else return false;
+}
 //                  </ функции для работы с таблицей event_feeds >
 
 //                  < функции для работы с таблицей events >

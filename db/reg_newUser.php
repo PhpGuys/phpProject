@@ -27,10 +27,13 @@ else{
     else if($password == $psw_rpt)
     {
         add_user($email, $firstName, $lastName, $password);
+        $author = $firstName." ".$lastName;
+        $nameFeed = "EventFeed".get_userId($email);
+        add_eventfeed($nameFeed, $author);
         setcookie("firstName", $firstName, time()+60*60*24, "/");
         setcookie("lastName", $lastName, time()+60*60*24, "/");
         setcookie("email", $email, time()+60*60*24, "/");
-        
+        setcookie("mainEventFeed", $nameFeed, time()+60*60*24, "/");
         echo "<script>
         alert('Регистрация прошла успешно!');
         document.location.href='../profile.php';

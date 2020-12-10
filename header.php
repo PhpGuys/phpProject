@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <?php require_once 'cookie_handler.php' ?>
+  <?php require_once 'cookie_handler.php';
+  require_once 'db/db_functions.php';
+  ?>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
   <script type="text/javascript"> 
   $(function() { 
@@ -41,6 +43,7 @@
   </div>
   <?php 
   if(is_authorized()){
+    $name = user_firstname();
     echo "<button class='btn-login'><a class='btn-login__link' href='login.php'>Выйти из аккаунта</a></button>";
   }
   else{

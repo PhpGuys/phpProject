@@ -412,3 +412,16 @@ margin-bottom:10px;
 }
 
 /*//////////////////////////////</footer>/////////////////////*/
+
+
+/*/////////////////////////profile.php////////////////////////*/
+
+.news-feeds {
+display: block;
+}
+.news-feeds__title {
+        font-size: 25px;
+        font-family: 'Courier New', Courier, monospace;
+
+}
+
