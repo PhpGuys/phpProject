@@ -107,7 +107,14 @@ function delete_eventfeed($name, $author) {
 return $result;
 }
 function get_eventfeedNameByAuthor($author) {
-    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM event_feeds WHERE author = '{$author}'"); 
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM event_feeds WHERE author = '{$author}'");
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $name =  $row['name'];
+        return $name;
+    }
+   
+    else return "Не найдено"; 
 }
 function add_contributor($id_contr) {
     $user_result = mysqli_query($GLOBALS['conn'], "SELECT * FROM users WHERE id='{$id_contr}'"); 
