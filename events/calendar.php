@@ -8,210 +8,9 @@ require_once __DIR__.'/events_handler.php';
    <title>Календарь событий</title>
      <link href="../images/favicon.ico" 
   rel = "shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="../css/calendar.css">
+
 <style type="text/css">
-
-body{
-   background-color: #5291cc;
-}
-
-ul{
-background-color:#192e69;
-color:white; 
-list-style-type: none;
-margin: 15px;
-padding: 15px;
-display: flex;
-
-justify-content:center;
-border-radius:10px;
-
-box-shadow: 2px 2px 5px #000000;
-}
-
-footer{
-  background-color:#192e69;
-color:white; 
-list-style-type: none;
-margin-left: 15px;
-margin-right: 15px;
-margin-top: 5px;
-margin-bottom: 5px;
-padding: 15px;
-
-
-display:flex;
-
-justify-content:center;
-border-radius:10px;
-
-box-shadow: 2px 2px 5px #000000; 
-}
-
-
-a{
-   padding: 50px;
-   text-decoration:none;
-   font-size: 150%;
-font-family: arial,amaze;
-   font-weight:bold;
-   text-transform: uppercase;
-   color: white;
-   text-shadow: 2px 2px 7px #111111;
-}
-
-a:hover{
-color: #FF8C00;
-
-}
-
-main{
-margin: 15px;
-padding: 35px;
-border-radius:10px;
-   font-size: 115%;
-opacity: 0.9;
-box-shadow: 2px 2px 20px #000000;
-background-color: #F0FFF0;
-}
-
-.six_month{
-   display:flex;
-   justify-content: center;
-}
-
-caption{
-      background-color:    #8A2BE2;
-padding: 5px;
-   color: white;
-
-font-family: ARIAL BLACK;
-}
-
-table{
-   padding: 20px;
-text-align: center;
-font-size: 83%;
-border: solid 1px grey;
-background-color:#F0F8FF;
-}
-
-th, td {border: 1px solid grey;padding: 5px;box-shadow: 0.4px 0.4px 4px #000000; border-radius: 8px;}
-
-td{background-color: white;}
-th{background-color: #FFFAF0;}
-
-#Data{
-   text-align: center;
-   font-size: 120%;
-
-}
-
-td:hover{
-   background-color: #006400;
-   color: white;
-border: 1px solid #006400;
-   font-weight:bold; 
-   cursor: pointer;
-}
-
-.logo {
-  display: flex; 
-   background-color: #1d182e;
-justify-content: flex-start;
-  height: 100px;
-margin: -8px;
-}
-
-.logo > .logo__link {
-  margin-left: 20px;
-  margin-top: -40px; 
-}
-
-.logo > .logo__headline {
-  font-size: 40px;
-  font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
-  margin-top: 30px;
-  margin-left: -10px;
-}
-
-.Form_Data{
- padding-top: 5px;
- display: flex;
- flex-wrap: wrap;
-}
-.clockpage
-{
-  margin-left: auto;
-  margin-right: 23px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    background: white;
-    text-align: center;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 30px;
-    padding: 10px;
-    font-weight: bold;
-    border-top: 10px solid #55c49f;
-    border-radius: 5px;
-
-}
-
-#dayOfWeek
-{
-    display: block;
-   font-size: 20px;
-}
-
-#Data{
-text-align: center;
-}
-
-.INP{
-   font-size: 200%;
-   text-align: center;
-   font-weight: bold;
-   background-color: #191970;
-   color: white;
-border: solid 3px white;
-box-shadow: 1px 1px 20px #000000;
-    border-radius: 15px;
-    outline: none;
-}
-
-
-@media only screen and (max-width: 1830px) {
-   .calendar, .Form_Data{
-      justify-content: center;
-      text-align: center;
-   }
- .six_month{
-    display: inline-table;
-   font-size: 150%;
-
-
- }
-#Data{
-    font-size: 90%;
-    }
-    #dayOfWeek{
-     font-size: 50%;
-   }
-}
-
-@media only screen and (max-width: 950px){
-a{
-   font-size: 120%;
-}
-ul{
-   display:grid;
-   text-align: center;
-   justify-content: center;
-}
-}
-
-
 
 </style>
 
@@ -236,722 +35,127 @@ ul{
                </ul>
             </nav>
       </header>
-   <div id="Data">
+   <!-- <div id="Data">
       <form>
          <input type="button" name="minus" value="<<" class="INP" >
          <input type="number" name="year" min="2020" max="2040" step="1" value="2020"style="font-size: 200%; text-align: center; font-weight: bold;">
          <input type="button" name="plus" value=">>" class="INP">    
       </form>
-   </div>
+   </div> -->
 <main class="calendar">
-<div class="six_month">
-<table>
-   <caption>Январь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
 
-<table>
-   <caption>Февраль</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
+<table id="calendarBig">
+ <thead>
+  <tr><td><td><td>
+ <tbody>
+  <tr>
+    <td>
+      <table data-m="0">
+        <thead>
+          <tr><td colspan="7">Январь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="1">
+        <thead>
+          <tr><td colspan="7">Февраль
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="2">
+        <thead>
+          <tr><td colspan="7">Март
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+  <tr>
+    <td>
+      <table data-m="3">
+        <thead>
+          <tr><td colspan="7">Апрель
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="4">
+        <thead>
+          <tr><td colspan="7">Май
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="5">
+        <thead>
+          <tr><td colspan="7">Июнь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+  <tr>
+    <td>
+      <table data-m="6">
+        <thead>
+          <tr><td colspan="7">Июль
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="7">
+        <thead>
+          <tr><td colspan="7">Август
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="8">
+        <thead>
+          <tr><td colspan="7">Сентябрь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+  <tr>
+    <td>
+      <table data-m="9">
+        <thead>
+          <tr><td colspan="7">Октябрь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="10">
+        <thead>
+          <tr><td colspan="7">Ноябрь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
+    <td>
+      <table data-m="11">
+        <thead>
+          <tr><td colspan="7">Декабрь
+          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+        <tbody>
+      </table>
 </table>
-<table>
-   <caption>Март</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Апрель</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Май</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Июнь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-</div>
-
-<div class="six_month">
-<table>
-   <caption>Июль</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-
-<table>
-   <caption>Август</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Сентябрь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Октябрь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Ноябрь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-<table>
-   <caption>Декабрь</caption>
-      <tr>
-         <th>ПН</th>
-         <th>ВТ</th>
-         <th>СР</th>
-         <th>ЧТ</th>
-         <th>ПТ</th>
-         <th style="color: red">СБ</th>
-         <th style="color: red">ВС</th>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>2</td>
-         <td>3</td>
-         <td>4</td>
-         <td>5</td>
-         <td>6</td>
-         <td>7</td>
-      </tr>
-      <tr>
-         <td>8</td>
-         <td>9</td>
-         <td>10</td>
-         <td>11</td>
-         <td>12</td>
-         <td>13</td>
-         <td>14</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>16</td>
-         <td>17</td>
-         <td>18</td>
-         <td>19</td>
-         <td>20</td>
-         <td>21</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>23</td>
-         <td>24</td>
-         <td>25</td>
-         <td>26</td>
-         <td>27</td>
-         <td>28</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>30</td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-      </tr>
-</table>
-</div>
 
 <h3>Добавить событие</h3>
-      <form class="Form_Data" method="$_POST" action="events_handler.php">
+      <form class="Form_Data" method="$_POST" action="add_event.php">
        
-         <input type="date" name="calendar" min="2020-10-10" max="2040-05-20">
-         <input type="submit" value="Ввести">
+         <input type="date" name="calendar" min="2020-10-10" max="2080-05-20">
          <input type="text" placeholder="Заголовок" name="title">
          <textarea placeholder="Описание" name="text">
 
          </textarea>
+         <button type="submit">Добавить</button>
+
       </form>
       <h3>Удалить событие</h3>
-      <form class="Form_Data" method="$_POST" action="events_handler.php">
+      <form class="Form_Data" method="$_POST" action="delete_event.php">
        
-         <input type="date" name="calendar" min="2020-10-10" max="2040-05-20" name="calendar_delete">
-         <input type="submit" value="Ввести">
+         <input type="date" min="2020-10-10" max="2080-05-20" name="calendar_delete">
          <input type="text" placeholder="Заголовок" name="title_delete" >
+         <button type="submit">Удалить</button>
+
       </form>
 
       <br style="background-color: #5291cc; border-radius: 4px;">
@@ -966,8 +170,9 @@ ul{
          <button type="submit">Удалить</button>
       </form>
       <div class="contributors">
-         
+
       </div> 
+      
 </main>
 
         <script type="text/javascript">
@@ -992,7 +197,91 @@ ul{
     setTimeout("clockTimer()", 1000);
 }
         </script>
-        
+  <!--------------------------------------------------------------------------->
+
+        <script>
+function calendarBig(year) {
+for (var m = 0; m <= 11; m++) {
+var D = new Date(year,[m],1),
+    Dlast = new Date(D.getFullYear(),D.getMonth()+1,0).getDate(),
+    DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+    DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+    calendar = '<tr>';
+
+if (DNfirst != 0) {
+  for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+}else{
+  for(var  i = 0; i < 6; i++) calendar += '<td>';
+}
+
+for(var  i = 1; i <= Dlast; i++) {
+  if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+    calendar += '<td class="today">'  + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
+  }else{
+    if (
+        (i == 1 && D.getMonth() == 0 && ((D.getFullYear() > 1897 && D.getFullYear() < 1930) || D.getFullYear() > 1947)) ||
+        (i == 2 && D.getMonth() == 0 && D.getFullYear() > 1992) ||
+        ((i == 3 || i == 4 || i == 5 || i == 6 || i == 8) && D.getMonth() == 0 && D.getFullYear() > 2004) ||
+        (i == 7 && D.getMonth() == 0 && D.getFullYear() > 1990) ||
+        (i == 23 && D.getMonth() == 1 && D.getFullYear() > 2001) ||
+        (i == 8 && D.getMonth() == 2 && D.getFullYear() > 1965) ||
+        (i == 1 && D.getMonth() == 4 && D.getFullYear() > 1917) ||
+        (i == 9 && D.getMonth() == 4 && D.getFullYear() > 1964) ||
+        (i == 12 && D.getMonth() == 5 && D.getFullYear() > 1990) ||
+        (i == 7 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 2005)) ||
+        (i == 8 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 1992)) ||
+        (i == 4 && D.getMonth() == 10 && D.getFullYear() > 2004)
+       ) {
+      calendar += '<td class="holiday">' + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
+    }else{
+      calendar += '<td>'  + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
+    }
+  }
+  if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+    calendar += '<tr>';
+  }
+}
+
+if (DNlast != 0) {
+  for(var  i = DNlast; i < 7; i++) calendar += '<td>';
+}
+
+document.querySelector('#calendarBig table[data-m="' + [m] + '"] tbody').innerHTML = calendar;
+document.querySelector('#calendarBig > thead td:nth-child(2)').innerHTML = 'Календарь на ' + year + ' год';
+document.querySelector('#calendarBig > thead td:nth-child(1)').innerHTML = 'Календарь на ' + parseFloat(parseFloat(year)-1) + ' год';
+document.querySelector('#calendarBig > thead td:nth-child(3)').innerHTML = 'Календарь на ' + parseFloat(parseFloat(year)+1) + ' год';
+
+// абзац создаёт сообщения
+for (var k = 1; k <= document.querySelectorAll('#calendarTable div').length; k++) {
+  var myD = document.querySelectorAll('#calendarBig table td'),
+      my = document.querySelector('#calendarTable div:nth-child(' + [k] + ')');
+  for (var i = 0; i < myD.length; i++) {
+    if (my.dataset.yyyy) {
+      if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1) && year == my.dataset.yyyy) {
+        myD[i].title = my.dataset.text;
+        if (my.dataset.link) {
+          myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
+        }
+      }
+    }else{
+      if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1)) {
+        myD[i].title = my.dataset.text;
+        if (my.dataset.link) {
+          myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
+        }
+      }
+    }
+  }
+}
+
+}}
+
+calendarBig(new Date().getFullYear());
+document.querySelector('#calendarBig > thead td:nth-child(1)').onclick = calendarBigG;
+document.querySelector('#calendarBig > thead td:nth-child(3)').onclick = calendarBigG;
+function calendarBigG() {calendarBig(this.innerHTML.replace(/[^\d]/gi, ''));}
+
+</script>     
       
 <footer>&copy; Все права защищены</footer>
 </body>

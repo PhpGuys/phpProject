@@ -152,15 +152,15 @@ function events_is_created() {
 }
 
 function event_is_exist($name_eventfeed){
-    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE name='{$name_eventfeed}'"); 
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE event-feed_name='{$name_eventfeed}'"); 
     if(mysqli_num_rows($result) == 1) return true;
     else return false;
 }
 
-function add_event($name, $author) {
+function add_event($name, $text, $author, $date, $eventfeed) {
     if(!eventfeed_is_exist($name, $author)) {
-        $result = mysqli_query($GLOBALS['conn'], "INSERT INTO events (name, author)
-                                                  VALUES('{$name}','{$author}')");
+        $result = mysqli_query($GLOBALS['conn'], "INSERT INTO events (name, text, author, date, event-feed_name)
+                                                  VALUES('{$name}','{$text}', '{$author}', '{$date}', '{$eventfeed}')");
         return $result;
     } else return false;
 }
