@@ -43,103 +43,98 @@ require_once __DIR__.'/events_handler.php';
       </form>
    </div> -->
 <main class="calendar">
+<?php 
+// проверяем передали ли нам месяц и год
+if(isset($_GET["ym"])){
 
-<table id="calendarBig">
- <thead>
-  <tr><td><td><td>
- <tbody>
-  <tr>
-    <td>
-      <table data-m="0">
+  $year  = (int)substr($_GET["ym"], 0, 4);
+  $month = (int)substr($_GET["ym"], 4, 2);
+
+}
+else{ // иначе выводить текущие месяц и год
+
+  $month = date("m", mktime(0,0,0,date('m'),1,date('Y')));
+  $year  = date("Y", mktime(0,0,0,date('m'),1,date('Y')));
+
+}
+
+$skip          = date("w", mktime(0,0,0,$month,1,$year)) - 1; // узнаем номер дня недели
+if($skip < 0){ 
+  $skip = 6; 
+}
+$daysInMonth   = date("t", mktime(0,0,0,$month,1,$year));       // узнаем число дней в месяце
+$calendar_head = '';    // обнуляем calendar head
+$calendar_body = '';    // обнуляем calendar boday
+$day = 1;       // для цикла далее будем увеличивать значение
+$authorOfEvent  = user_firstname()." ".user_lastname();
+$eventfeedName = get_eventfeedNameByAuthor($authorOfEvent);
+
+for($i = 0; $i < 6; $i++){ // Внешний цикл для недель 6 с неполыми
+
+  $calendar_body .= '<tr>';       // открываем тэг строки
+  for($j = 0; $j < 7; $j++){      // Внутренний цикл для дней недели
+    $message = getEvent($day, $month, $year, $eventfeedName, $authorOfEvent);
+    $status;
+    if ($message == false){
+      $status = 'day';
+    }
+    else{
+      $status = 'event';
+    }
+          if(($skip > 0)or($day > $daysInMonth)){ // выводим пустые ячейки до 1 го дня ип после полного количства дней
+          
+                  $calendar_body .= '<td class="none"></td>'; 
+                  $skip--;
+
+          }
+          else{
+                  
+                  if($j == 0) {     // если воскресенье то омечаем выходной
+                        $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
+                  }  
+                  else{   // в противном случае просто выводим день в ячейке
+                          if ((date($j)==$day)&&(date($m)==$month)&&(date('Y')==$year)){//проверяем на текущий день
+                                  $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
+                          }       
+                          else{ 
+                                  $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
+                             }
+                           }
+                  $day++; // увеличиваем $day
+          }
+          
+  }
+  $calendar_body .= '</tr>'; // закрываем тэг строки
+}
+
+// заголовок календаря
+$calendar_head = '
+<tr>          
+  <th colspan="2"><a href="?ym='.date("Ym", mktime(0,0,0,$month-1,1,$year)).'">« Пред</a></th>
+  <th colspan="3">'.date("F, Y", mktime(0,0,0,$month,1,$year)).'</th>
+  <th colspan="2"><a href="?ym='.date("Ym", mktime(0,0,0,$month+1,1,$year)).'">След »</a></th>
+</tr>
+
+<th>Понедельник</th>
+<th>Вторник</th>
+<th>Среда</th>
+<th>Четверг</th>
+<th>Пятница</th>
+<th>Суббота</th>
+<th>Воскресенье</th>
+</tr>'; 
+?>
+<table id="calendar" width="710" border="1" cellspacing="0" cellpadding="5">
         <thead>
-          <tr><td colspan="7">Январь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                <?php echo $calendar_head; ?>
+        </thead>
         <tbody>
-      </table>
-    <td>
-      <table data-m="1">
-        <thead>
-          <tr><td colspan="7">Февраль
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="2">
-        <thead>
-          <tr><td colspan="7">Март
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-  <tr>
-    <td>
-      <table data-m="3">
-        <thead>
-          <tr><td colspan="7">Апрель
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="4">
-        <thead>
-          <tr><td colspan="7">Май
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="5">
-        <thead>
-          <tr><td colspan="7">Июнь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-  <tr>
-    <td>
-      <table data-m="6">
-        <thead>
-          <tr><td colspan="7">Июль
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="7">
-        <thead>
-          <tr><td colspan="7">Август
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="8">
-        <thead>
-          <tr><td colspan="7">Сентябрь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-  <tr>
-    <td>
-      <table data-m="9">
-        <thead>
-          <tr><td colspan="7">Октябрь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="10">
-        <thead>
-          <tr><td colspan="7">Ноябрь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
-    <td>
-      <table data-m="11">
-        <thead>
-          <tr><td colspan="7">Декабрь
-          <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-        <tbody>
-      </table>
+                <?php echo $calendar_body; ?>
+        </tbody>
 </table>
 
 <h3>Добавить событие</h3>
-      <form class="Form_Data" method="$_POST" action="add_event.php">
+      <form class="Form_Data" method="post" action="add_event.php">
        
          <input type="date" name="calendar" min="2020-10-10" max="2080-05-20">
          <input type="text" placeholder="Заголовок" name="title">
@@ -147,10 +142,10 @@ require_once __DIR__.'/events_handler.php';
 
          </textarea>
          <button type="submit">Добавить</button>
-
+        
       </form>
       <h3>Удалить событие</h3>
-      <form class="Form_Data" method="$_POST" action="delete_event.php">
+      <form class="Form_Data" method="post" action="delete_event.php">
        
          <input type="date" min="2020-10-10" max="2080-05-20" name="calendar_delete">
          <input type="text" placeholder="Заголовок" name="title_delete" >
@@ -160,12 +155,12 @@ require_once __DIR__.'/events_handler.php';
 
       <br style="background-color: #5291cc; border-radius: 4px;">
       <h3>Добавить пользователя</h3>
-      <form class="Form_Data" method="$_POST" action="add_user.php">
+      <form class="Form_Data" method="post" action="add_user.php">
          <input type="text" placeholder="Эл.почта пользователя" name="email_contr">
          <button type="submit">Добавить</button>
       </form>
       <h3>Удалить пользователя</h3>
-      <form class="Form_Data" method="$_POST" action="delete_user.php">
+      <form class="Form_Data" method="post" action="delete_user.php">
          <input type="text" placeholder="Эл.почта пользователя" name="email_contrdelete">
          <button type="submit">Удалить</button>
       </form>
@@ -199,89 +194,6 @@ require_once __DIR__.'/events_handler.php';
         </script>
   <!--------------------------------------------------------------------------->
 
-        <script>
-function calendarBig(year) {
-for (var m = 0; m <= 11; m++) {
-var D = new Date(year,[m],1),
-    Dlast = new Date(D.getFullYear(),D.getMonth()+1,0).getDate(),
-    DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
-    DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
-    calendar = '<tr>';
-
-if (DNfirst != 0) {
-  for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
-}else{
-  for(var  i = 0; i < 6; i++) calendar += '<td>';
-}
-
-for(var  i = 1; i <= Dlast; i++) {
-  if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-    calendar += '<td class="today">'  + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
-  }else{
-    if (
-        (i == 1 && D.getMonth() == 0 && ((D.getFullYear() > 1897 && D.getFullYear() < 1930) || D.getFullYear() > 1947)) ||
-        (i == 2 && D.getMonth() == 0 && D.getFullYear() > 1992) ||
-        ((i == 3 || i == 4 || i == 5 || i == 6 || i == 8) && D.getMonth() == 0 && D.getFullYear() > 2004) ||
-        (i == 7 && D.getMonth() == 0 && D.getFullYear() > 1990) ||
-        (i == 23 && D.getMonth() == 1 && D.getFullYear() > 2001) ||
-        (i == 8 && D.getMonth() == 2 && D.getFullYear() > 1965) ||
-        (i == 1 && D.getMonth() == 4 && D.getFullYear() > 1917) ||
-        (i == 9 && D.getMonth() == 4 && D.getFullYear() > 1964) ||
-        (i == 12 && D.getMonth() == 5 && D.getFullYear() > 1990) ||
-        (i == 7 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 2005)) ||
-        (i == 8 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 1992)) ||
-        (i == 4 && D.getMonth() == 10 && D.getFullYear() > 2004)
-       ) {
-      calendar += '<td class="holiday">' + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
-    }else{
-      calendar += '<td>'  + '<span class="tooltip" tabindex="0">'+ i +'<span>Подсказка</span></span>';
-    }
-  }
-  if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
-    calendar += '<tr>';
-  }
-}
-
-if (DNlast != 0) {
-  for(var  i = DNlast; i < 7; i++) calendar += '<td>';
-}
-
-document.querySelector('#calendarBig table[data-m="' + [m] + '"] tbody').innerHTML = calendar;
-document.querySelector('#calendarBig > thead td:nth-child(2)').innerHTML = 'Календарь на ' + year + ' год';
-document.querySelector('#calendarBig > thead td:nth-child(1)').innerHTML = 'Календарь на ' + parseFloat(parseFloat(year)-1) + ' год';
-document.querySelector('#calendarBig > thead td:nth-child(3)').innerHTML = 'Календарь на ' + parseFloat(parseFloat(year)+1) + ' год';
-
-// абзац создаёт сообщения
-for (var k = 1; k <= document.querySelectorAll('#calendarTable div').length; k++) {
-  var myD = document.querySelectorAll('#calendarBig table td'),
-      my = document.querySelector('#calendarTable div:nth-child(' + [k] + ')');
-  for (var i = 0; i < myD.length; i++) {
-    if (my.dataset.yyyy) {
-      if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1) && year == my.dataset.yyyy) {
-        myD[i].title = my.dataset.text;
-        if (my.dataset.link) {
-          myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
-        }
-      }
-    }else{
-      if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1)) {
-        myD[i].title = my.dataset.text;
-        if (my.dataset.link) {
-          myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
-        }
-      }
-    }
-  }
-}
-
-}}
-
-calendarBig(new Date().getFullYear());
-document.querySelector('#calendarBig > thead td:nth-child(1)').onclick = calendarBigG;
-document.querySelector('#calendarBig > thead td:nth-child(3)').onclick = calendarBigG;
-function calendarBigG() {calendarBig(this.innerHTML.replace(/[^\d]/gi, ''));}
-
-</script>     
       
 <footer>&copy; Все права защищены</footer>
 </body>

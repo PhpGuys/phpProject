@@ -147,26 +147,50 @@ function events_is_created() {
             text VARCHAR(2000),
             author VARCHAR(50),
             date DATE,
-            event-feed_name VARCHAR(100))");
+            eventfeed_name VARCHAR(100))");
     }
 }
 
 function event_is_exist($name_eventfeed){
-    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE event-feed_name='{$name_eventfeed}'"); 
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE eventfeed_name='{$name_eventfeed}'"); 
     if(mysqli_num_rows($result) == 1) return true;
     else return false;
 }
 
 function add_event($name, $text, $author, $date, $eventfeed) {
-    if(!eventfeed_is_exist($name, $author)) {
-        $result = mysqli_query($GLOBALS['conn'], "INSERT INTO events (name, text, author, date, event-feed_name)
+        $result = mysqli_query($GLOBALS['conn'], "INSERT INTO events (title, text, author, date, eventfeed_name)
                                                   VALUES('{$name}','{$text}', '{$author}', '{$date}', '{$eventfeed}')");
         return $result;
-    } else return false;
 }
-function delete_event($title, $name_eventfeed) {
-    $result = mysqli_query($GLOBALS['conn'], "DELETE FROM events WHERE title = '$title', event-feed_name = '$name_eventfeed' ");
+function delete_event($title, $date, $name_eventfeed) {
+    $result = mysqli_query($GLOBALS['conn'], "DELETE FROM events WHERE title = '$title' && eventfeed_name = '$name_eventfeed' && date='$date' ");
 return $result;
+}
+
+function getEvent($day, $month, $year, $eventfeed, $author) {
+
+$year = (int)$year;
+$month = (int)$month;
+$day = (int)$day;
+if($day < 10){
+    $day = (string)'0'.$day;
+}
+if($month < 10){
+    $month = (string)'0'.$month;
+}
+$date = $year.'-'.$month.'-'.$day;
+
+$result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE date='{$date}' && eventfeed_name='{$eventfeed}' && author='{$author}'"); 
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $title =  $row['title'];
+        $text =  $row['text'];
+
+        return $title.'  '.$text;
+    }
+    else{
+        return false;
+    }
 }
 
 //                  </ функции для работы с таблицей events >
