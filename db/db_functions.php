@@ -168,7 +168,7 @@ return $result;
 }
 
 function getEvent($day, $month, $year, $eventfeed, $author) {
-
+$array = [];
 $year = (int)$year;
 $month = (int)$month;
 $day = (int)$day;
@@ -181,12 +181,17 @@ if($month < 10){
 $date = $year.'-'.$month.'-'.$day;
 
 $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE date='{$date}' && eventfeed_name='{$eventfeed}' && author='{$author}'"); 
-    if(mysqli_num_rows($result) == 1){
-        $row = mysqli_fetch_assoc($result);
+echo $result;
+if(mysqli_num_rows($result) >= 1){
+    
+    while(  $row = mysqli_fetch_assoc($result)  ) {
         $title =  $row['title'];
         $text =  $row['text'];
 
-        return $title.'  '.$text;
+        $array[] = $title.'  '.$text.'***';
+    
+    }
+    return $array;
     }
     else{
         return false;
