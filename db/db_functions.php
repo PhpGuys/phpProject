@@ -151,16 +151,22 @@ function events_is_created() {
     }
 }
 
-function event_is_exist($name_eventfeed){
-    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE eventfeed_name='{$name_eventfeed}'"); 
+function event_is_exist($title, $name_eventfeed, $date){
+    $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE eventfeed_name ='{$name_eventfeed}' && title = '$title' && date='$date' "); 
     if(mysqli_num_rows($result) == 1) return true;
     else return false;
 }
 
 function add_event($name, $text, $author, $date, $eventfeed) {
+    if(event_is_exist($name, $eventfeed, $date) == true){
+        return false;
+    }
+    else {
         $result = mysqli_query($GLOBALS['conn'], "INSERT INTO events (title, text, author, date, eventfeed_name)
-                                                  VALUES('{$name}','{$text}', '{$author}', '{$date}', '{$eventfeed}')");
+        VALUES('{$name}','{$text}', '{$author}', '{$date}', '{$eventfeed}')");
         return $result;
+    }
+       
 }
 function delete_event($title, $date, $name_eventfeed) {
     $result = mysqli_query($GLOBALS['conn'], "DELETE FROM events WHERE title = '$title' && eventfeed_name = '$name_eventfeed' && date='$date' ");

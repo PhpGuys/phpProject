@@ -8,13 +8,21 @@ $authorOfEvent  = user_firstname()." ".user_lastname();
 $date = $_POST['calendar']; 
 $eventfeedName = get_eventfeedNameByAuthor($authorOfEvent);
 
-add_event($title, $text, $authorOfEvent, $date, $eventfeedName);
-echo "<script>
-    alert('Событие добавлено!');
+if(event_is_exist($title, $eventfeedName, $date) == true){
+    echo "<script>
+    alert('Ошибка! Событие с таким названием уже добавлено!');
     document.location.href='../profile.php';
     </script>";   
+}
 
-
+else {
+    add_event($title, $text, $authorOfEvent, $date, $eventfeedName);
+    echo "<script>
+        alert('Событие добавлено!');
+        document.location.href='../profile.php';
+        </script>"; 
+}
+  
 }
 else {
     echo "Ошибка отправки";
