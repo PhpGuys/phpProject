@@ -73,7 +73,7 @@ for($i = 0; $i < 6; $i++){ // Внешний цикл для недель 6 с �
 
   $calendar_body .= '<tr>';       // открываем тэг строки
   for($j = 0; $j < 7; $j++){      // Внутренний цикл для дней недели
-    $message[] = getEvent($day, $month, $year, $eventfeedName, $authorOfEvent);
+    $message = getEvent($day, $month, $year, $eventfeedName, $authorOfEvent);
     $status;
 
     if ($message == false){
@@ -91,14 +91,14 @@ for($i = 0; $i < 6; $i++){ // Внешний цикл для недель 6 с �
           else{
                   
                   if($j == 0) {     // если воскресенье то омечаем выходной
-                        $calendar_body .= '<td class="'.$status.'"><span title="'.implode(' ', $message).'">'.$day.'</span></td>';
+                        $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
                   }  
                   else{   // в противном случае просто выводим день в ячейке
                           if ((date($j)==$day)&&(date($m)==$month)&&(date('Y')==$year)){//проверяем на текущий день
-                                  $calendar_body .= '<td class="'.$status.'"><span title="'.implode(' ', $message).'">'.$day.'</span></td>';
+                                  $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
                           }       
                           else{ 
-                                  $calendar_body .= '<td class="'.$status.'"><span title="'.implode(' ', $message).'">'.$day.'</span></td>';
+                                  $calendar_body .= '<td class="'.$status.'"><span title="'.$message.'">'.$day.'</span></td>';
                              }
                            }
                   $day++; // увеличиваем $day

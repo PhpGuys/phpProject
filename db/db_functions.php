@@ -179,19 +179,17 @@ if($month < 10){
     $month = (string)'0'.$month;
 }
 $date = $year.'-'.$month.'-'.$day;
-
+$str = "";
 $result = mysqli_query($GLOBALS['conn'], "SELECT * FROM events WHERE date='{$date}' && eventfeed_name='{$eventfeed}' && author='{$author}'"); 
-echo $result;
 if(mysqli_num_rows($result) >= 1){
     
     while(  $row = mysqli_fetch_assoc($result)  ) {
         $title =  $row['title'];
         $text =  $row['text'];
 
-        $array[] = $title.'  '.$text.'***';
-    
+        $str = $str.$title.'  '.$text;
     }
-    return $array;
+    return $str;
     }
     else{
         return false;
