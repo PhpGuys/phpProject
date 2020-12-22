@@ -153,7 +153,17 @@ $calendar_head = '
          <button type="submit">Удалить</button>
 
       </form>
+      <h3>Редактировать событие</h3>
+      <form class="Form_Data" method="post" action="edit-event.php">
+       
+         <input type="date" name="calendar_edit" min="2020-10-10" max="2080-05-20">
+         <input type="text" placeholder="Заголовок" name="title_edit">
+         <textarea placeholder="Описание" name="text_edit">
 
+         </textarea>
+         <button type="submit">Добавить</button>
+        
+      </form>
       <br style="background-color: #5291cc; border-radius: 4px;">
       <h3>Добавить пользователя</h3>
       <form class="Form_Data" method="post" action="add_user.php">

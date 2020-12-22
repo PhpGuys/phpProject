@@ -122,6 +122,7 @@ function add_contributor($id_contr) {
         $space = " ";
         $result = mysqli_query($GLOBALS['conn'], 
         "UPDATE event_feeds SET contributors = '$id_contr.$space' WHERE id='{$id_contr}'");
+        return $result;
     }
     else return false;
 }
@@ -131,6 +132,7 @@ function delete_contributor($id_contr) {
         $space = " ";
         $result = mysqli_query($GLOBALS['conn'], 
         "UPDATE event_feeds SET contributors = '$id_contr.$space' WHERE id='{$id_contr}'");
+        return $result;
     }
     else return false;
 }
@@ -202,4 +204,13 @@ if(mysqli_num_rows($result) >= 1){
     }
 }
 
+
+function edit_event($title, $date, $eventfeed, $authorEvent, $text) {
+    if(event_is_exist($title, $eventfeed, $date) == true) {
+        $result = mysqli_query($GLOBALS['conn'], 
+        "UPDATE events SET text = '$text' WHERE title='{$title}' && date='$date' && eventfeed_name='$eventfeed' && author='$authorEvent' ");
+        return $result;
+    }
+    else return false;
+}
 //                  </ функции для работы с таблицей events >
