@@ -11,7 +11,7 @@ $eventfeedName = get_eventfeedNameByAuthor($authorOfEvent);
 if(event_is_exist($title, $eventfeedName, $date) == true){
     echo "<script>
     alert('Ошибка! Событие с таким названием уже добавлено!');
-    document.location.href='../profile.php';
+    document.location.href='calendar.php';
     </script>";   
 }
 
@@ -19,7 +19,7 @@ else {
     add_event($title, $text, $authorOfEvent, $date, $eventfeedName);
     echo "<script>
         alert('Событие добавлено!');
-        document.location.href='../profile.php';
+        document.location.href='calendar.php';
         </script>"; 
 }
   

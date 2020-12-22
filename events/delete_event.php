@@ -10,7 +10,7 @@ $nameEventfeed = get_eventfeedNameByAuthor($authorOfEvent);
     delete_event($title, $date, $nameEventfeed);
     echo "<script>
         alert('Событие удалено!');
-        document.location.href='../profile.php';
+        document.location.href='calendar.php';
         </script>";   
     
 }

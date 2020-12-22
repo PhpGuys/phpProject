@@ -11,7 +11,7 @@ $eventfeedName = get_eventfeedNameByAuthor($authorOfEvent);
     edit_event($title, $date, $eventfeedName, $authorOfEvent, $text);
     echo "<script>
         alert('Событие отредактировано!');
-        document.location.href='../profile.php';
+        document.location.href='calendar.php';
         </script>"; 
 
   
